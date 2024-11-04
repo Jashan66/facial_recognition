@@ -32,10 +32,15 @@ class FaceRecognition:
     def encode_faces(self):
         for image in os.listdir('new_faces'):
             face_image = face_recognition.load_image_file(f'new_faces/{image}')
-            face_encoding = face_recognition.face_encodings(face_image)[0]
+            encodings = face_recognition.face_encodings(face_image)
 
-            self.known_face_encodings.append(face_encoding)
-            self.known_face_names.append(image)
+            if len(encodings) > 0:
+                face_encoding = encodings[0]
+                self.known_face_encodings.append(face_encoding)
+                self.known_face_names.append(image.split(".")[0])
+        else:
+            print(f"Warning: No faces found in {image}. Skipping this file.")
+
         print(self.known_face_names)
 
     def add_new_face(self,frame):
@@ -109,7 +114,7 @@ class FaceRecognition:
             key = cv2.waitKey(1)
             if key == ord('q'):
                 break
-            elif key == ord('t') and 'Unknown' in self.face_names:
+            elif key == ord('t'):
                 self.add_new_face(frame)
 
         video_capture.release()
