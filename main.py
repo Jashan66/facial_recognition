@@ -38,6 +38,22 @@ class FaceRecognition:
             self.known_face_names.append(image)
         print(self.known_face_names)
 
+    def add_new_face(self,frame):
+        name = input("Add a name for new user (firstName_lastName): ")
+
+        image_path = f'new_faces/{name}.jpeg'
+
+        cv2.imwrite(image_path, frame)
+
+        face_image = face_recognition.load_image_file(image_path)
+        face_encoding = face_recognition.face_encodings(face_image)[0]
+        
+        self.known_face_encodings.append(face_encoding)
+        self.known_face_names.append(name)
+        print(f"Added new face: {name}")
+
+
+
     def run_recognition(self):
         video_capture = cv2.VideoCapture(0)
 
@@ -90,8 +106,11 @@ class FaceRecognition:
 
             cv2.imshow('Face Recognition', frame)
 
-            if cv2.waitKey(1) == ord('q'):
+            key = cv2.waitKey(1)
+            if key == ord('q'):
                 break
+            elif key == ord('t') and 'Unknown' in self.face_names:
+                self.add_new_face(frame)
 
         video_capture.release()
         cv2.destroyAllWindows()
