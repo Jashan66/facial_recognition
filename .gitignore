@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+
+# macOS system files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env
+*.env
+
+# Jupyter Notebook checkpoints (if any)
+.ipynb_checkpoints/
+
+# Logs and temp
+*.log
+*.tmp
+*.swp
+
+# Compiled files
+*.pyo
+*.pyd
+*.pyc
+
+# Wheel / distribution
+dist/
+build/
+*.egg-info/
