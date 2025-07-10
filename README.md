@@ -11,6 +11,6 @@ A facial recognition software that uses a photo(s) to detect faces and give an a
 -> Run `pip install -r requirements.txt`
 
 
-#Common Issues
+# Common Issues
 
 -> Remove all files that are not images from the `new_faces` folder. Someimtes hidden files like `.DS_Store` will cause an error.
