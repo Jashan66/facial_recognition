@@ -10,6 +10,8 @@ A facial recognition software that uses a photo(s) to detect faces and give an a
 
 -> Run `pip install -r requirements.txt`
 
+-> Run `python3 main.py`
+
 
 # Common Issues
 
